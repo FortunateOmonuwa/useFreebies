@@ -28,6 +28,8 @@ export default function App() {
         avgImdbRating={avgImdbRating}
         avgUserRating={avgUserRating}
         avgRuntime={avgRuntime}
+        setIsOpen1={() => setIsOpen1((open) => !open)}
+        setIsOpen2={() => setIsOpen2((open) => !open)}
       />
     </>
   );
