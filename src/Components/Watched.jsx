@@ -1,3 +1,4 @@
+import Summary from "./Summary";
 const Watched = ({
   onClick,
   isOpen2,
@@ -13,27 +14,12 @@ const Watched = ({
       </button>
       {isOpen2 && (
         <>
-          <div className="summary">
-            <h2>Movies you watched</h2>
-            <div>
-              <p>
-                <span>#️⃣</span>
-                <span>{watched.length} movies</span>
-              </p>
-              <p>
-                <span>⭐️</span>
-                <span>{avgImdbRating}</span>
-              </p>
-              <p>
-                <span>🌟</span>
-                <span>{avgUserRating}</span>
-              </p>
-              <p>
-                <span>⏳</span>
-                <span>{avgRuntime} min</span>
-              </p>
-            </div>
-          </div>
+          <Summary
+            watched={watched}
+            avgImdbRating={avgImdbRating}
+            avgUserRating={avgUserRating}
+            avgRuntime={avgRuntime}
+          />
 
           <ul className="list">
             {watched.map((movie) => (

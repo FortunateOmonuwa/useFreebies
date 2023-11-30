@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
 import tempMovieData from "./Components/TempMovieData";
@@ -8,7 +8,7 @@ const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
+  const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
   const [isOpen1, setIsOpen1] = useState(true);
   const [isOpen2, setIsOpen2] = useState(true);
@@ -17,6 +17,9 @@ export default function App() {
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
 
+  useEffect(() => {
+    setMovies(tempMovieData);
+  }, []);
   return (
     <>
       <Navbar movies={movies} />
