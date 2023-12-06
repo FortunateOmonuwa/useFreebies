@@ -9,7 +9,7 @@ const average = (arr) =>
 
 export default function App() {
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [watched, setWatched] = useState([]);
   const [isOpen1, setIsOpen1] = useState(true);
   const [isOpen2, setIsOpen2] = useState(true);
 
@@ -19,6 +19,9 @@ export default function App() {
 
   useEffect(() => {
     setMovies(tempMovieData);
+  }, []);
+  useEffect(() => {
+    setWatched(tempWatchedData);
   }, []);
   return (
     <>

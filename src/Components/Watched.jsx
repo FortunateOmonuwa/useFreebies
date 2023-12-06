@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Summary from "./Summary";
 import WatchList from "./WatchList";
 const Watched = ({
