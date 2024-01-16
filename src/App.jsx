@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
 import tempMovieData from "./Components/TempMovieData";
 import tempWatchedData from "./Components/TempWatchedData";
+import MovieListBox from "./Components/MovieListBox";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -36,7 +37,7 @@ export default function App() {
         avgRuntime={avgRuntime}
         setIsOpen1={() => setIsOpen1((open) => !open)}
         setIsOpen2={() => setIsOpen2((open) => !open)}
-      />
+      ></Main>
     </>
   );
 }
