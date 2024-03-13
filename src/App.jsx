@@ -4,10 +4,13 @@ import Main from "./Components/Main";
 import tempMovieData from "./Components/TempMovieData";
 import tempWatchedData from "./Components/TempWatchedData";
 import MovieListBox from "./Components/MovieListBox";
+import { api_key } from "./assets/Apikey";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
+const query = "interstellar";
+const moviesApiURL = `http://www.omdbapi.com/?i=tt3896198&apikey=${api_key}&s=${query}`;
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
@@ -19,8 +22,21 @@ export default function App() {
   const avgRuntime = average(watched.map((movie) => movie.runtime));
 
   useEffect(() => {
-    setMovies(tempMovieData);
+    const fetchMovies = async () => {
+      try {
+        const res = await fetch(moviesApiURL);
+        const data = await res.json();
+        console.log(data);
+        setMovies(data.Search);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+
+    fetchMovies();
+    console.log(movies);
   }, []);
+
   useEffect(() => {
     setWatched(tempWatchedData);
   }, []);
